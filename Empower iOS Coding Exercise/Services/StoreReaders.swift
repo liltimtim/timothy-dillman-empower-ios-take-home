@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: Store Reader Protocols
 
-public protocol StoreReader {
-    func read(storeName: String) throws -> Data?
+protocol StoreReader {
+    func read(storeName: String) async throws -> Data?
 }
 
 // MARK: Reader Types
@@ -18,7 +18,7 @@ public protocol StoreReader {
 /**
  The reader type defined here is for reading data from local storage using application bundle
  */
-public final class FileStoreReader: StoreReader {
+final class FileStoreReader: StoreReader {
     private var bundle: Bundle?
     
     /**
@@ -26,7 +26,7 @@ public final class FileStoreReader: StoreReader {
      
      - Parameter bundle: The bundle from which to read JSON files.
      */
-    public init(with bundle: Bundle) {
+    init(with bundle: Bundle) {
         self.bundle = bundle
     }
     
@@ -42,14 +42,20 @@ public final class FileStoreReader: StoreReader {
      
      - Returns: The data read from the JSON file.
      */
-    public func read(storeName: String) throws -> Data? {
+    func read(storeName: String) async throws -> Data? {
         // ensure given filename is not empty
         guard let bundle = self.bundle else { throw StoreReaderErrors.invalidBundle }
         guard !storeName.isEmpty else { throw StoreReaderErrors.emptyStoreName }
-        do {
-            guard let path = bundle.url(forResource: storeName, withExtension: "json") else { throw StoreReaderErrors.invalidPathURL(name: storeName) }
-            let data = try Data(contentsOf: path)
-            return data
+        return try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    guard let path = bundle.url(forResource: storeName, withExtension: "json") else { throw StoreReaderErrors.invalidPathURL(name: storeName) }
+                    let data = try Data(contentsOf: path)
+                    continuation.resume(with: .success(data))
+                } catch let error {
+                    continuation.resume(throwing: error)
+                }
+            }
         }
     }
 }
@@ -59,7 +65,7 @@ public final class FileStoreReader: StoreReader {
 /**
  `StoreReaderErrors` enumerates errors that can occur during operations with `StoreReader` or its implementations.
  */
-public enum StoreReaderErrors: Error, LocalizedError {
+enum StoreReaderErrors: Error, LocalizedError {
     /// Error thrown when an empty store name is given to `StoreReader`.
     case emptyStoreName
     
@@ -82,7 +88,7 @@ public enum StoreReaderErrors: Error, LocalizedError {
      */
     case invalidPathURL(name: String)
     
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .emptyStoreName:
             return "Empty store name given to StoreReader"

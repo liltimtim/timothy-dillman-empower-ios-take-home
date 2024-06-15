@@ -57,11 +57,13 @@ class BeneficiaryDetailViewController: UIViewController {
         socialSecurityNumberLabel.text = "Social Security Number: \(beneficiary.socialSecurityNumber)"
         socialSecurityNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         socialSecurityNumberLabel.accessibilityLabel = "Social Security Number: \(beneficiary.socialSecurityNumber)"
+        socialSecurityNumberLabel.accessibilityIdentifier = "social_security_number_label"
         
         view.addSubview(dateOfBirthLabel)
         dateOfBirthLabel.text = "Birthday \(beneficiary.dateOfBirthDisplay ?? "")"
         dateOfBirthLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOfBirthLabel.accessibilityLabel = "Birthday \(beneficiary.dateOfBirthDisplay ?? "not available")"
+        dateOfBirthLabel.accessibilityIdentifier = "date_of_birth_label"
         
         view.addSubview(phoneNumberLabel)
         phoneNumberLabel.text = "Phone number: \(beneficiary.phoneNumber)"
@@ -76,6 +78,7 @@ class BeneficiaryDetailViewController: UIViewController {
         let accessibilityPhoneLabel = chars.map { c in return "\(c)" }.joined(separator: " ")
         phoneNumberLabel.accessibilityLabel = "Phone number: \(accessibilityPhoneLabel)"
         phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        phoneNumberLabel.accessibilityIdentifier = "phone_number_label"
         
         let address = beneficiary.beneficiaryAddress
         view.addSubview(addressLabel)
@@ -83,6 +86,7 @@ class BeneficiaryDetailViewController: UIViewController {
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         addressLabel.accessibilityLabel = "Beneficiary address: \(address.addressFormatted)"
         addressLabel.numberOfLines = 0
+        addressLabel.accessibilityIdentifier = "address_label"
         
         NSLayoutConstraint.activate([
             socialSecurityNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),

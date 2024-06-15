@@ -13,10 +13,9 @@
 		5D86678E2C1CB045005F44F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5D86678D2C1CB045005F44F0 /* Base */; };
 		5D8667992C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667982C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseTests.swift */; };
 		5D8667A32C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667A22C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITests.swift */; };
-		5D8667A52C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667A42C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift */; };
 		5D8667B22C1CB159005F44F0 /* beneficiaries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D8667B12C1CB159005F44F0 /* beneficiaries.json */; };
 		5D8667B62C1CB535005F44F0 /* Beneficiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667B52C1CB535005F44F0 /* Beneficiary.swift */; };
-		5D8667B82C1CB56D005F44F0 /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667B72C1CB56D005F44F0 /* FileDataStore.swift */; };
+		5D8667B82C1CB56D005F44F0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667B72C1CB56D005F44F0 /* DataStore.swift */; };
 		5D8667BA2C1CBD32005F44F0 /* FileStoreReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667B92C1CBD32005F44F0 /* FileStoreReaderTests.swift */; };
 		5D8667BD2C1CC210005F44F0 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667BC2C1CC210005F44F0 /* Data+Extension.swift */; };
 		5D8667BF2C1CC29F005F44F0 /* StoreReaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667BE2C1CC29F005F44F0 /* StoreReaders.swift */; };
@@ -29,6 +28,7 @@
 		5D8667D02C1CFDDB005F44F0 /* MainViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667CF2C1CFDDB005F44F0 /* MainViewControllerViewModel.swift */; };
 		5D8667D22C1CFE2D005F44F0 /* BeneficiaryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667D12C1CFE2D005F44F0 /* BeneficiaryListViewModel.swift */; };
 		5D8667D42C1CFEC3005F44F0 /* BeneficiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667D32C1CFEC3005F44F0 /* BeneficiaryDetailViewController.swift */; };
+		5D8667DA2C1D2392005F44F0 /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8667D92C1D2392005F44F0 /* TestingUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +59,9 @@
 		5D8667982C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empower_iOS_Coding_ExerciseTests.swift; sourceTree = "<group>"; };
 		5D86679E2C1CB045005F44F0 /* Empower iOS Coding ExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Empower iOS Coding ExerciseUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8667A22C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empower_iOS_Coding_ExerciseUITests.swift; sourceTree = "<group>"; };
-		5D8667A42C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5D8667B12C1CB159005F44F0 /* beneficiaries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beneficiaries.json; sourceTree = "<group>"; };
 		5D8667B52C1CB535005F44F0 /* Beneficiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beneficiary.swift; sourceTree = "<group>"; };
-		5D8667B72C1CB56D005F44F0 /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
+		5D8667B72C1CB56D005F44F0 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		5D8667B92C1CBD32005F44F0 /* FileStoreReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStoreReaderTests.swift; sourceTree = "<group>"; };
 		5D8667BC2C1CC210005F44F0 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		5D8667BE2C1CC29F005F44F0 /* StoreReaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReaders.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		5D8667CF2C1CFDDB005F44F0 /* MainViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerViewModel.swift; sourceTree = "<group>"; };
 		5D8667D12C1CFE2D005F44F0 /* BeneficiaryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryListViewModel.swift; sourceTree = "<group>"; };
 		5D8667D32C1CFEC3005F44F0 /* BeneficiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryDetailViewController.swift; sourceTree = "<group>"; };
+		5D8667D92C1D2392005F44F0 /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,7 @@
 				5D8667982C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseTests.swift */,
 				5D8667B92C1CBD32005F44F0 /* FileStoreReaderTests.swift */,
 				5D8667C22C1CCA16005F44F0 /* FileDataStoreTests.swift */,
+				5D8667D92C1D2392005F44F0 /* TestingUtils.swift */,
 			);
 			path = "Empower iOS Coding ExerciseTests";
 			sourceTree = "<group>";
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				5D8667A22C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITests.swift */,
-				5D8667A42C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift */,
 			);
 			path = "Empower iOS Coding ExerciseUITests";
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 		5D8667B42C1CB49E005F44F0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				5D8667B72C1CB56D005F44F0 /* FileDataStore.swift */,
+				5D8667B72C1CB56D005F44F0 /* DataStore.swift */,
 				5D8667BE2C1CC29F005F44F0 /* StoreReaders.swift */,
 			);
 			path = Services;
@@ -351,7 +351,7 @@
 				5D8667822C1CB044005F44F0 /* AppDelegate.swift in Sources */,
 				5D8667CB2C1CD488005F44F0 /* BeneficiaryListViewController.swift in Sources */,
 				5D8667CD2C1CE66C005F44F0 /* Array+Extension.swift in Sources */,
-				5D8667B82C1CB56D005F44F0 /* FileDataStore.swift in Sources */,
+				5D8667B82C1CB56D005F44F0 /* DataStore.swift in Sources */,
 				5D8667842C1CB044005F44F0 /* SceneDelegate.swift in Sources */,
 				5D8667BF2C1CC29F005F44F0 /* StoreReaders.swift in Sources */,
 				5D8667C12C1CC5CE005F44F0 /* Address.swift in Sources */,
@@ -367,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D8667BA2C1CBD32005F44F0 /* FileStoreReaderTests.swift in Sources */,
+				5D8667DA2C1D2392005F44F0 /* TestingUtils.swift in Sources */,
 				5D8667992C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseTests.swift in Sources */,
 				5D8667C32C1CCA16005F44F0 /* FileDataStoreTests.swift in Sources */,
 			);
@@ -376,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D8667A52C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITestsLaunchTests.swift in Sources */,
 				5D8667A32C1CB045005F44F0 /* Empower_iOS_Coding_ExerciseUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

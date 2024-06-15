@@ -8,34 +8,31 @@
 import XCTest
 
 final class Empower_iOS_Coding_ExerciseUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func test_selectBeneficiaryFromList() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let tablesQuery = app.tables["beneficiary_list_table"]
+        let cell = tablesQuery.cells["beneficiary_0_1"]
+        cell.tap()
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func test_selectBeneficiaryValidateDetails() throws {
+        let app = XCUIApplication()
+        app.launch()
+        // grab first cell tap it
+        app.tables["beneficiary_list_table"].cells["beneficiary_0_0"].tap()
+        
+        // validate details page information
+        let ssnLabel = app.staticTexts["social_security_number_label"]
+        XCTAssertTrue(ssnLabel.exists)
+        XCTAssertEqual(ssnLabel.label, "Social Security Number: XXXXX3333")
+        let dobLabel = app.staticTexts["date_of_birth_label"]
+        XCTAssertTrue(dobLabel.exists)
+        XCTAssertEqual(dobLabel.label, "Birthday 04/20/1979")
+        let phoneLabel = app.staticTexts["phone_number_label"]
+        XCTAssertTrue(phoneLabel.exists)
+        let addressLabel = app.staticTexts["address_label"]
+        XCTAssertTrue(addressLabel.exists)
     }
 }

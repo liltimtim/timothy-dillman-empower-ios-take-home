@@ -23,6 +23,7 @@ class BeneficiaryListViewController: UITableViewController {
         tableView.delegate = self.viewModel
         tableView.dataSource = self.viewModel
         tableView.refreshControl = refreshCtrl
+        tableView.accessibilityIdentifier = "beneficiary_list_table"
         registerSubscriptions()
     }
     

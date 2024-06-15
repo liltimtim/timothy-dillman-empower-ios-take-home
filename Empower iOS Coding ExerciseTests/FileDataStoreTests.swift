@@ -22,13 +22,13 @@ final class FileDataStoreTests: XCTestCase {
         sut = FileDataStore(store: givenStore)
     }
     
-    func test_readsAndReturnsDecodableFromStore() {
+    func test_readsAndReturnsDecodableFromStore() async {
         // when
         do {
             // we use generic casting here to hint to the compiler
             // that we are wanting an array of beneficiary type
             // because we use generics, the casting is done for us.
-            let results: [Beneficiary] = try sut.readFromStore()
+            let results: [Beneficiary] = try await sut.readFromStore()
             XCTAssertEqual(results.count, 2)
             // grab first result and ensure it exists otherwise fail this test
             // we have a guarantee the first result will be "Smith"
@@ -44,50 +44,5 @@ final class FileDataStoreTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-    }
-}
-
-class MockReader: StoreReader {
-    func read(storeName: String) throws -> Data? {
-        return """
-        [
-          {
-            "lastName": "Smith",
-            "firstName": "John",
-            "designationCode": "P",
-            "beneType": "Spouse",
-            "socialSecurityNumber": "XXXXX3333",
-            "dateOfBirth": "04201979",
-            "middleName": "D",
-            "phoneNumber": "3035555555",
-            "beneficiaryAddress": {
-              "firstLineMailing": "8515 E Orchard Rd",
-              "scndLineMailing": null,
-              "city": "Greenwood Village",
-              "zipCode": "80111",
-              "stateCode": "CO",
-              "country": "US"
-            }
-          },
-          {
-            "lastName": "Smith",
-            "firstName": "Jane",
-            "designationCode": "C",
-            "beneType": "Child",
-            "socialSecurityNumber": "XXXXX4664",
-            "dateOfBirth": "01112012",
-            "middleName": "E",
-            "phoneNumber": "3034455555",
-            "beneficiaryAddress": {
-              "firstLineMailing": "8515 E Orchard Rd",
-              "scndLineMailing": null,
-              "city": "Greenwood Village",
-              "zipCode": "80111",
-              "stateCode": "CO",
-              "country": "US"
-            }
-          }
-        ]
-        """.data(using: .utf8)
     }
 }

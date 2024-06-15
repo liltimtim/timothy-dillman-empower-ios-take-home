@@ -35,11 +35,14 @@ class BeneficiaryListViewModel: NSObject, ObservableObject {
     private func count() -> Int { return data.value.count }
     
     private func loadFromStore() {
-        do {
-            let results: [Beneficiary] = try store.readFromStore()
-            data.send(results)
-        } catch let error {
-            data.send(completion: .failure(error))
+        Task.detached { [weak self] in
+            guard let self = self else { return }
+            do {
+                let results: [Beneficiary] = try await store.readFromStore()
+                self.data.send(results)
+            } catch let error {
+                self.data.send(completion: .failure(error))
+            }
         }
     }
 }

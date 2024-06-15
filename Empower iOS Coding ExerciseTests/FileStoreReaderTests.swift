@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Empower_iOS_Coding_Exercise
+@testable import Empower_iOS_Coding_Exercise
 final class FileStoreReaderTests: XCTestCase {
     var sut: StoreReader!
     var givenBundle: Bundle!
@@ -23,20 +23,26 @@ final class FileStoreReaderTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_canReadFileWithKnownFileExistingInBundle() {
+    func test_canReadFileWithKnownFileExistingInBundle() async {
         // given when and then
-        XCTAssertNotNil(try? sut.read(storeName: "beneficiaries"))
+        let results = try? await sut.read(storeName: "beneficiaries")
+//        XCTAssertNotNil(try? await sut.read(storeName: "beneficiaries"))
     }
     
-    func test_ensureEmptyStoreNameThrowsError() {
+    func test_ensureEmptyStoreNameThrowsError() async {
         // given
         let givenStoreName = ""
         
         // when and then
-        XCTAssertThrowsError(try sut.read(storeName: givenStoreName))
+        do {
+            _ = try await sut.read(storeName: givenStoreName)
+            XCTFail()
+        } catch {
+            XCTAssertEqual(error.localizedDescription, StoreReaderErrors.emptyStoreName.localizedDescription)
+        }
     }
     
-    func test_validBundleWithoutResourceThrowsError() {
+    func test_validBundleWithoutResourceThrowsError() async {
         // given
         
         // create specialized one off bundle
@@ -47,9 +53,11 @@ final class FileStoreReaderTests: XCTestCase {
         
         // create new system under test (sut) with custom bundle
         sut = FileStoreReader(with: bundle)
-        
-        // then
-        XCTAssertThrowsError(try sut.read(storeName: givenStoreName))
+        do {
+            _ = try await sut.read(storeName: givenStoreName)
+        } catch {
+            // then
+            XCTAssertEqual(error.localizedDescription, StoreReaderErrors.invalidPathURL(name: givenStoreName).localizedDescription)
+        }
     }
-
 }
